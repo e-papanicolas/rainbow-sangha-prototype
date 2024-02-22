@@ -1,0 +1,25 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import Table from '@/components/forum/Table.astro'
+import { buttonVariants } from '@/components/ui/button'
+---
+
+<BaseLayout
+  title="DC Rainbow Sangha"
+  description="A Buddhism study group."
+>
+  <section class="container grid items-center gap-6 pb-8 pt-6 md:py-10">
+    <div class="flex max-w-[980px] flex-col items-start gap-2">
+      <h1
+        class="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl"
+      >
+        Welcome <br class="hidden sm:inline" />
+        to the forum page.
+      </h1>
+      <p class="max-w-[700px] text-lg text-muted-foreground">
+        <a class={buttonVariants({ variant: 'ghost' })} href="/forum/new">Post topics</a> for discourse here.
+      </p>
+    </div>
+  </section>
+  <Table />
+</BaseLayout>

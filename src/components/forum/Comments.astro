@@ -1,0 +1,47 @@
+---
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+
+// const { comments } = Astro.props;
+
+const comments = [
+    {
+        slug: 'c001',
+        person: 'Chrissy',
+        content: 'I love this post!',
+        timestamp: new Date(),
+    },
+    {
+        slug: 'c002',
+        person: 'Frank',
+        content: 'First you need to understand the basics of the topic.',
+        timestamp: new Date(),
+    },
+    {
+        slug: 'c003',
+        person: 'Samantha',
+        content: 'I agree with Frank, you need to understand the basics first.',
+        timestamp: new Date(),
+    }
+]
+---
+<div>
+    { comments.map(comment => (
+        <Card>
+            <CardHeader>
+                <CardTitle>{comment.person}</CardTitle>
+                <CardDescription>{comment.timestamp}</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <p>{comment.content}</p>
+            </CardContent>
+        </Card>
+    )).sort((a, b) => a.timestamp - b.timestamp)}
+</div>

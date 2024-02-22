@@ -1,0 +1,32 @@
+---
+import { buttonVariants } from '@/components/ui/button'
+
+const { headerLevel1, headerLevel2, subtitle } = Astro.props
+---
+<section class="container grid items-center gap-6 pb-8 pt-6 md:py-10">
+    <div class="flex max-w-[980px] flex-col items-start gap-2">
+      <h1
+        class="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl"
+      >
+        { headerLevel1 } <br class="hidden sm:inline" />
+        { headerLevel2 }
+      </h1>
+      <p class="max-w-[700px] text-lg text-muted-foreground">
+        { subtitle }
+      </p>
+    </div>
+    <div class="flex gap-4">
+      <a
+        href="/"
+        class={buttonVariants()}
+      >
+        About Us
+      </a>
+      <a
+        href="/getstarted"
+        class={buttonVariants({ variant: 'outline' })}
+      >
+        Get Started
+      </a>
+    </div>
+</section>

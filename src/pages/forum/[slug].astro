@@ -1,0 +1,46 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Comments from '@/components/forum/Comments.astro';
+
+const page = Astro.props;
+
+export const getStaticPaths = (() => {   
+    const pages = [
+    {
+        slug: "f001",
+        title: "How do I meditate?",
+        description: "I'm new to meditation and I'm not sure where to start. Can anyone help me?",
+        original_poster: "Eleni",
+        category: "Meditation",
+        datePosted: "2024-02-22",
+        comments: [],
+    },
+    ];
+
+    return pages.map(({ slug, title, description, original_poster, category, datePosted, comments }) => {
+        return {
+            params: { slug },
+                props: { title, description, original_poster, category, datePosted, comments },
+        };
+    });
+}) 
+---
+<BaseLayout
+    title="Resource: Article"
+    description="Introduction to Buddhism"
+>
+    <section class="container grid items-center gap-6 pb-8 pt-6 md:py-10">
+        <div class="flex max-w-[980px] flex-col items-start gap-2">
+            <h1 class="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
+                { page.title }
+            </h1>
+            <p class="text-md">
+                { page.category } | posted by: { page.original_poster } | { page.datePosted } 
+            </p>
+            <p class="max-w-[700px] text-lg text-muted-foreground">
+                { page.description }
+            </p>
+            <Comments comments={page.comments} />
+        </div>
+    </section>
+</BaseLayout>

@@ -1,0 +1,62 @@
+---
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table"
+
+interface ForumTopic {
+    slug: string
+    title: string
+    original_poster: string
+    category: string
+    datePosted: string
+}
+
+const topics: ForumTopic[] = [{
+    slug: "f001",
+    title: "How do I meditate?",
+    original_poster: "Eleni",
+    category: "Meditation",
+    datePosted: "2024-02-22",
+}]
+
+---
+<Table>
+    <TableCaption>A list of topics that Sangha members want to talk about.</TableCaption>
+    <TableHeader>
+        <TableRow>
+            <TableHead>Title</TableHead>
+            <TableHead></TableHead>
+            <TableHead>Posted by</TableHead>
+            <TableHead>Category</TableHead>
+            <TableHead>Date posted</TableHead>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        {topics.map((topic) => (
+            <TableRow>
+                <TableCell>{topic.title}</TableCell>
+                <TableCell><button class="row" data-slug={topic.slug}>OPEN</button></TableCell>
+                <TableCell>{topic.original_poster}</TableCell>
+                <TableCell>{topic.category}</TableCell>
+                <TableCell>{topic.datePosted}</TableCell>
+            </TableRow>
+        ))}
+    </TableBody>
+</Table>
+
+<script>
+    const buttons = document.querySelectorAll('button.row');
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const slug = button.getAttribute('data-slug');
+            document.location.href = `/forum/${slug}`;
+        });
+    });
+</script>
