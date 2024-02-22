@@ -2,6 +2,8 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Comments from '@/components/forum/Comments.astro';
 
+export const prerender = true;
+
 const page = Astro.props;
 
 export const getStaticPaths = (() => {   
@@ -20,7 +22,7 @@ export const getStaticPaths = (() => {
     return pages.map(({ slug, title, description, original_poster, category, datePosted, comments }) => {
         return {
             params: { slug },
-                props: { title, description, original_poster, category, datePosted, comments },
+            props: { title, description, original_poster, category, datePosted, comments },
         };
     });
 }) 
