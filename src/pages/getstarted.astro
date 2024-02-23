@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import InnerHomeLayout from '@/layouts/InnerHomeLayout.astro'
+import HomeLayout from '@/layouts/HomeLayout.astro'
+import PageLayout from '@/layouts/PageLayout.astro'
 ---
 
 <BaseLayout
   title="DC Rainbow Sangha"
   description="A Buddhism study group."
 >
-  <InnerHomeLayout headerLevel1="Want" headerLevel2="to join?" subtitle="Here's how."/>
+  <HomeLayout headerLevel1="Want" headerLevel2="to join?" subtitle="Here's how."/>
+    <PageLayout>
+    </PageLayout>
 </BaseLayout>
