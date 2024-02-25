@@ -10,14 +10,20 @@ import HomeLayout from '@/layouts/HomeLayout.astro'
 >
   <HomeLayout headerLevel1="Welcome" headerLevel2="to our website." subtitle="We are the DC Rainbow Sangha." />
     <PageLayout>
-      <p>
-        <b>Welcome to the Rainbow Sangha!</b> We are a group of practicing spiritualists who seek to better understand ourselves and others. Our practice focuses on developing meditative concentration while studying the teachings of the Buddha, the Dharma. We seek to create an open and inclusive community that embraces people from all walks of life. We believe that we are one global community, but acknowledge that each person has a unique background and experience and so there is no single path to liberation. With a focus on the cessation of stress and self liberation we understand that to help ourselves is to help the community - the two are not separate from one another.
+      <p class="py-5">
+        <span class="wavy">Welcome to the Rainbow Sangha!</span> We are a group of practicing spiritualists who seek to better understand ourselves and others. Our practice focuses on developing meditative concentration while studying the teachings of the Buddha, the Dharma. We strive to create an open and inclusive community that embraces people from all walks of life. We believe that we are one global community, but acknowledge that each person has a unique background and life experience which means there is no single path to liberation. With a focus on the cessation of stress and self liberation we understand that to help ourselves is to help the community - the two are not separate from one another.
       </p>
-      <p>
-        We invite you to join us for our weekly community-led Dharma meetings. These meetings include guided loving-kindness mediations, relaxation techniques, discussion of topics for contemplation, and a Q&A where members are encouraged to ask questions about the Dharma or managing stress in their daily lives. We encourage anyone to join. Our members range from complete beginners to meditation and Buddhism as well as those who seek to explore the deeper meanings of the esoteric and unlock the full potential of the Mind.
+      <p class="py-5">
+        We invite you to join us for our weekly community-led Dharma meetings. These meetings include guided loving-kindness meditations, relaxation techniques, discussion of topics for contemplation, and a Q&A where members are encouraged to ask questions about the Dharma or managing stress in their daily lives. We encourage anyone to join. Our members range from complete beginners to meditation and Buddhism as well as those who seek to explore the deeper meanings of the esoteric and unlock the full potential of the Mind.
       </p>
-      <p>
+      <p class="py-5">
         The Sangha is self-governing and all decisions (e.g., schedule changes, meeting topics, facilitator selections) are made democratically through group voting and discussion. Our meetings are currently held over Zoom while we search for a physical meeting space. Please see our calendar [insert link] for meeting times and video call information. Meetings are open to the public, with no advance registration required. There are no fees or payment required to join the Sangha or attend meetings.
       </p>
   </PageLayout>
 </BaseLayout>
+
+<style>
+  .wavy {
+    text-decoration: underline wavy rgb(255, 79, 144);
+  }
+</style>
