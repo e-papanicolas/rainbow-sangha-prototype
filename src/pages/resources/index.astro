@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import Table from '@/components/resources/Table.astro'
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+
 ---
 
 <BaseLayout
@@ -15,9 +18,11 @@ import Table from '@/components/resources/Table.astro'
         Welcome <br class="hidden sm:inline" />
         to the resources page.
       </h1>
-      <p class="max-w-[700px] text-lg text-muted-foreground">
-        We are the DC Rainbow Sangha.
-      </p>
+      <div class="flex w-full max-w-lg items-center space-x-2">
+        <Input type="text" placeholder="what are you looking for?" />
+        <Button type="submit">Search</Button>
+        <Button>Submit a new resource</Button>
+      </div>
     </div>
   </section>
   <Table />

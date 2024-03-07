@@ -8,33 +8,18 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { CollectionEntry, getCollection } from "astro:content";
 
-interface Resource {
-    slug: string
-    title: string
-    author: string
-    category: string
-    description: string
-    datePosted: string 
-}
-
-const resources: Resource[] = [{
-    slug: "r001",
-    title: "Introduction to Buddhism",
-    author: "Buddha",
-    category: "Article",
-    description: "A short introduction to Buddhism, written by Buddha!",
-    datePosted: "2024-02-21",
-}]
+const articles: CollectionEntry<'articles'>[] = await getCollection('articles', ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  }); // add searching and sorting
 
 ---
 <Table>
     <TableCaption>A list of our resources.</TableCaption>
     <TableHeader>
         <TableRow>
-            <TableHead className="w-[100px]">ID</TableHead>
             <TableHead>Title</TableHead>
-            <TableHead>Author</TableHead>
             <TableHead>Category</TableHead>
             <TableHead>Description</TableHead>
             <TableHead></TableHead>
@@ -42,16 +27,13 @@ const resources: Resource[] = [{
         </TableRow>
     </TableHeader>
     <TableBody>
-        {resources.map((resource) => (
+        {articles.map((article: CollectionEntry<'articles'>) => (
             <TableRow>
-                <TableCell>{resource.slug}</TableCell>
-                <TableCell>{resource.title}</TableCell>
-                <TableCell>{resource.author}</TableCell>
-                <TableCell>{resource.category}</TableCell>
-                <TableCell>{resource.description}</TableCell>
-                <TableCell><button class="row" data-slug={resource.slug}>READ</button></TableCell>
-                <TableCell>{resource.datePosted}</TableCell>
-                
+                <TableCell>{article.data.title}</TableCell>
+                <TableCell>Article</TableCell>
+                <TableCell>{article.data.description}</TableCell>
+                <TableCell><button class="row" data-slug={article.slug}>READ</button></TableCell>
+                <TableCell>{article.data.date}</TableCell>
             </TableRow>
         ))}
     </TableBody>
@@ -63,7 +45,7 @@ const resources: Resource[] = [{
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             const slug = button.getAttribute('data-slug');
-            document.location.href = `/resources/${slug}`;
+            document.location.href = `/resources/articles/${slug}`;
         });
     });
 </script>

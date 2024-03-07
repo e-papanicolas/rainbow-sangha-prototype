@@ -1,0 +1,28 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection, CollectionEntry } from 'astro:content';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const articles: CollectionEntry<'articles'>[] = await getCollection('articles', ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
+  
+  return articles.map((entry: CollectionEntry<'articles'>) => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'articles'> };
+const { Content } = await entry.render();
+
+---
+<BaseLayout
+  title="Resource: Article"
+  description="This is a resource article"
+>
+  <section class="container grid items-center gap-6 pb-8 pt-6 md:py-10">
+    <Content />
+  </section>
+</BaseLayout>
